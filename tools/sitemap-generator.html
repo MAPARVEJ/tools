@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap Generator - SEO Tools Hub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header will be dynamically loaded here -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <!-- Tool Content -->
+            <div class="col-lg-8">
+                <h1 class="mb-4">Sitemap Generator</h1>
+                <p class="lead mb-4">Generate XML sitemaps for your website to help search engines crawl your content effectively.</p>
+
+                <!-- Tool Form -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form id="sitemapForm">
+                            <div class="mb-3">
+                                <label for="websiteUrl" class="form-label">Website URL</label>
+                                <input type="url" class="form-control" id="websiteUrl" required 
+                                    placeholder="https://example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="maxPages" class="form-label">Maximum Pages to Crawl</label>
+                                <input type="number" class="form-control" id="maxPages" value="100" min="1" max="1000">
+                            </div>
+                            <div class="mb-3">
+                                <label for="changeFrequency" class="form-label">Default Change Frequency</label>
+                                <select class="form-select" id="changeFrequency">
+                                    <option value="always">Always</option>
+                                    <option value="hourly">Hourly</option>
+                                    <option value="daily" selected>Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="yearly">Yearly</option>
+                                    <option value="never">Never</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="priority" class="form-label">Default Priority</label>
+                                <select class="form-select" id="priority">
+                                    <option value="1.0">1.0 (Highest)</option>
+                                    <option value="0.8">0.8</option>
+                                    <option value="0.6">0.6</option>
+                                    <option value="0.4">0.4</option>
+                                    <option value="0.2">0.2 (Lowest)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="excludePatterns" class="form-label">Exclude Patterns (one per line)</label>
+                                <textarea class="form-control" id="excludePatterns" rows="3" 
+                                    placeholder="/admin/*&#10;/private/*&#10;*.pdf"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-spinner fa-spin me-2 d-none" id="loadingIcon"></i>
+                                Generate Sitemap
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="card mb-4" id="resultsCard" style="display: none;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3>Generated Sitemap</h3>
+                            <div>
+                                <button class="btn btn-outline-primary btn-sm me-2" onclick="downloadSitemap()">
+                                    <i class="fas fa-download"></i> Download XML
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm" onclick="copyToClipboard()">
+                                    <i class="fas fa-copy"></i> Copy to Clipboard
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Statistics</h5>
+                            <div id="statistics" class="row">
+                                <!-- Statistics will be displayed here -->
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h5>URLs Found</h5>
+                            <div id="urlList" class="table-responsive">
+                                <!-- URLs will be displayed here -->
+                            </div>
+                        </div>
+                        <pre id="sitemapXml" class="bg-light p-3 rounded" style="display: none;"></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Ad Space -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div id="sidebar-ad-space">
+                            <!-- Ad content will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Information -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4>About Sitemaps</h4>
+                        <p>XML sitemaps help search engines discover and index your website's pages more effectively.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Better indexing</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Faster crawling</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Improved SEO</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/main.js"></script>
+    <script src="../js/sitemap-generator.js"></script>
+</body>
+</html> 

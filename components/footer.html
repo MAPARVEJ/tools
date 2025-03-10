@@ -1,0 +1,95 @@
+<!-- Footer -->
+<footer class="bg-dark text-light py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <!-- About -->
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h5>About SEO Tools Hub</h5>
+                <p class="text-muted">A comprehensive collection of SEO and developer tools to help you optimize your website and improve your online presence.</p>
+                <div class="social-links">
+                    <a href="#" class="text-light me-3" data-bs-toggle="tooltip" title="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-light me-3" data-bs-toggle="tooltip" title="Like us on Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-light me-3" data-bs-toggle="tooltip" title="Connect on LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-light" data-bs-toggle="tooltip" title="Fork us on GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="text-muted" id="footerHomeLink">Home</a></li>
+                    <li><a href="about.html" class="text-muted" id="footerAboutLink">About Us</a></li>
+                    <li><a href="contact.html" class="text-muted" id="footerContactLink">Contact</a></li>
+                    <li><a href="privacy.html" class="text-muted" id="footerPrivacyLink">Privacy Policy</a></li>
+                    <li><a href="terms.html" class="text-muted" id="footerTermsLink">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="col-lg-4">
+                <h5>Newsletter</h5>
+                <p class="text-muted">Subscribe to our newsletter for updates and tips.</p>
+                <form class="mb-3" id="newsletterForm" onsubmit="return handleNewsletterSubmit(event)">
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="newsletterEmail" placeholder="Enter your email" required>
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </div>
+                    <div class="form-text text-muted mt-2" id="newsletterMessage"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <hr class="bg-dark-light">
+                <p class="text-muted text-center mb-0">
+                    © 2024 SEO Tools Hub. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Fix footer links based on current path
+(function() {
+    const basePath = window.location.pathname.includes('/tools/') ? '../' : '';
+    const links = {
+        'footerHomeLink': 'index.html',
+        'footerAboutLink': 'about.html',
+        'footerContactLink': 'contact.html',
+        'footerPrivacyLink': 'privacy.html',
+        'footerTermsLink': 'terms.html'
+    };
+
+    Object.entries(links).forEach(([id, path]) => {
+        const link = document.getElementById(id);
+        if (link) {
+            link.href = basePath + path;
+        }
+    });
+})();
+
+// Handle newsletter submission
+function handleNewsletterSubmit(event) {
+    event.preventDefault();
+    const email = document.getElementById('newsletterEmail').value;
+    const messageElement = document.getElementById('newsletterMessage');
+    
+    // Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        messageElement.textContent = 'Please enter a valid email address.';
+        messageElement.className = 'form-text text-danger mt-2';
+        return false;
+    }
+
+    // Simulate newsletter subscription
+    messageElement.textContent = 'Thank you for subscribing! Please check your email to confirm.';
+    messageElement.className = 'form-text text-success mt-2';
+    document.getElementById('newsletterEmail').value = '';
+    return false;
+}
+</script> 

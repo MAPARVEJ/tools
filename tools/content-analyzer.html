@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Analyzer - SEO Tools Hub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header will be dynamically loaded here -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row">
+            <!-- Tool Content -->
+            <div class="col-lg-8">
+                <h1 class="mb-4">Content Analyzer</h1>
+                <p class="lead mb-4">Analyze your content's SEO performance and readability to improve its effectiveness.</p>
+
+                <!-- Tool Form -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form id="contentAnalyzerForm">
+                            <div class="mb-3">
+                                <label for="content" class="form-label">Content</label>
+                                <textarea class="form-control" id="content" rows="10" required 
+                                    placeholder="Paste your content here..."></textarea>
+                                <div class="form-text">Enter the content you want to analyze.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="targetKeyword" class="form-label">Target Keyword</label>
+                                <input type="text" class="form-control" id="targetKeyword" required 
+                                    placeholder="Enter your target keyword">
+                                <div class="form-text">Enter the main keyword you're targeting with this content.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contentType" class="form-label">Content Type</label>
+                                <select class="form-select" id="contentType">
+                                    <option value="blog">Blog Post</option>
+                                    <option value="article">Article</option>
+                                    <option value="product">Product Description</option>
+                                    <option value="landing">Landing Page</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-spinner fa-spin me-2 d-none" id="loadingIcon"></i>
+                                Analyze Content
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="card mb-4" id="resultsCard" style="display: none;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3>Content Analysis Results</h3>
+                            <button class="btn btn-outline-primary btn-sm" onclick="exportResults()">
+                                <i class="fas fa-download"></i> Export Report
+                            </button>
+                        </div>
+                        <div class="mb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h6>Readability Score</h6>
+                                            <p class="h4" id="readabilityScore">-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h6>SEO Score</h6>
+                                            <p class="h4" id="seoScore">-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h6>Word Count</h6>
+                                            <p class="h4" id="wordCount">-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h6>Keyword Density</h6>
+                                            <p class="h4" id="keywordDensity">-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <h5>Content Structure</h5>
+                            <div id="contentStructure" class="table-responsive">
+                                <!-- Content structure will be displayed here -->
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <h5>SEO Elements</h5>
+                            <div id="seoElements" class="table-responsive">
+                                <!-- SEO elements will be displayed here -->
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <h5>Readability Metrics</h5>
+                            <canvas id="readabilityChart"></canvas>
+                        </div>
+                        <div class="mb-4">
+                            <h5>Recommendations</h5>
+                            <div id="recommendations" class="alert alert-info">
+                                <!-- Recommendations will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Ad Space -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div id="sidebar-ad-space">
+                            <!-- Ad content will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Information -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4>About Content Analysis</h4>
+                        <p>Content analysis helps you optimize your content for both search engines and readers. Improve your content's effectiveness with detailed insights.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Optimize readability</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Improve SEO</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Enhance engagement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/main.js"></script>
+    <script src="../js/content-analyzer.js"></script>
+</body>
+</html> 

@@ -1,0 +1,72 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="fas fa-tools me-2"></i>
+            SEO Tools Hub
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="seoToolsDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        SEO Tools
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="seoToolsDropdown">
+                        <li><a class="dropdown-item" href="tools/meta-tag-generator.html">Meta Tag Generator</a></li>
+                        <li><a class="dropdown-item" href="tools/keyword-density.html">Keyword Density Checker</a></li>
+                        <li><a class="dropdown-item" href="tools/sitemap-generator.html">Sitemap Generator</a></li>
+                        <li><a class="dropdown-item" href="tools/google-index-checker.html">Google Index Checker</a></li>
+                        <li><a class="dropdown-item" href="tools/domain-authority.html">Domain Authority Checker</a></li>
+                        <li><a class="dropdown-item" href="tools/backlink-checker.html">Backlink Checker</a></li>
+                        <li><a class="dropdown-item" href="tools/mobile-friendly.html">Mobile-Friendly Test</a></li>
+                        <li><a class="dropdown-item" href="tools/content-analyzer.html">Content Analyzer</a></li>
+                        <li><a class="dropdown-item" href="tools/keyword-research.html">Keyword Research</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="devToolsDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Developer Tools
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="devToolsDropdown">
+                        <li><a class="dropdown-item" href="tools/json-formatter.html">JSON Formatter</a></li>
+                        <li><a class="dropdown-item" href="tools/base64.html">Base64 Encoder/Decoder</a></li>
+                        <li><a class="dropdown-item" href="tools/regex-tester.html">Regex Tester</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex" onsubmit="return false;">
+                <input class="form-control me-2" type="search" id="navSearch" placeholder="Search tools..." aria-label="Search">
+                <button class="btn btn-outline-light" type="button" onclick="handleNavSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<script>
+// Handle navigation search
+function handleNavSearch() {
+    const searchTerm = document.getElementById('navSearch').value.trim();
+    if (searchTerm) {
+        const basePath = window.location.pathname.includes('/tools/') ? '../' : '';
+        window.location.href = `${basePath}index.html?search=${encodeURIComponent(searchTerm)}`;
+    }
+}
+
+// Handle search on enter key
+document.getElementById('navSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        handleNavSearch();
+    }
+});
+</script> 
